@@ -1,5 +1,6 @@
-  insert into artist
-  values(
+  insert into artist(
+      name  
+  )values(
     'Jake',
     5
     ), (
@@ -31,8 +32,19 @@ where city = 'Calgary'
 select first_name, last_name from employee
 where city = 'Calgary'
 
+select * from employee
+where first_name = "Nancy";
+
+select *from employee
+where reports_to=2
+
+select city, count(*) from employee
+where city = 'Lethbridge'
+group by city;
+
 select * from invoice
 where billing_country = 'USA'
+
 
 
 
@@ -52,9 +64,9 @@ where total  < 5
 select sum(total) as total_invoice_amount from invoice
 
 
-select * from invoice_line
-where unit_price > 0.99
-
+select i. * from invoice i
+join invoice_line il on i.invoice_id = il.invoice_id
+where il.unit_price >0.99
 
 select i.invoice_date, i.total, c.first_name, c.last_name
 from invoice i
